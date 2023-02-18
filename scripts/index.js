@@ -48,6 +48,24 @@ function logServer(message) {
 }
 
 /**
+ * Validate Directory
+ * @param {string} projectPath
+ */
+function validateDir(projectPath) {
+  try {
+    fs.mkdirSync(projectPath)
+  } catch (err) {
+    if (err.code === 'EEXIST') {
+      const message = `The file ${projectName} already exist in the current directory, please give it another name.`
+      console.log(logServer(message))
+    } else {
+      console.log(err)
+    }
+    process.exit(1)
+  }
+}
+
+/**
  * Main
  * @param {string} templateChoice
  * @param {string} projectPath
@@ -79,24 +97,6 @@ function main(templateChoice, projectPath, installDeps) {
     console.log(logServer('The installation is done, this is ready to use !'))
   } catch (err) {
     console.log(err)
-  }
-}
-
-/**
- * Validate Directory
- * @param {string} projectPath
- */
-function validateDir(projectPath) {
-  try {
-    fs.mkdirSync(projectPath)
-  } catch (err) {
-    if (err.code === 'EEXIST') {
-      const message = `The file ${projectName} already exist in the current directory, please give it another name.`
-      console.log(logServer(message))
-    } else {
-      console.log(err)
-    }
-    process.exit(1)
   }
 }
 
