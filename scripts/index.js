@@ -10,6 +10,8 @@ const currentNodeVersion = process.versions.node
 const semver = currentNodeVersion.split('.')
 const major = semver[0]
 
+const defaultProjectName = process.argv[2]
+
 const currentPath = process.cwd()
 const originGitRepo = 'https://github.com/masb0ymas'
 
@@ -21,6 +23,13 @@ if (major < 14) {
       'Create Expresso App requires Node 14 or higher. \n' +
       'Please update your version of Node.'
   )
+  process.exit(1)
+}
+
+if (process.argv.length < 3) {
+  console.log('You have to provide a name to your app.')
+  console.log('For example :')
+  console.log('    npx create-expresso-app my-app')
   process.exit(1)
 }
 
@@ -108,7 +117,7 @@ inquirer
         else
           return 'Project name may only include letters, numbers, underscores and hashes.'
       },
-      default: 'my-expresso',
+      default: defaultProjectName,
     },
     {
       name: 'installDeps',
