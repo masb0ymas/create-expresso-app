@@ -1,7 +1,7 @@
 {
   "name": "create-expresso-app",
   "version": "0.1.1",
-  "description": "expresso cli, pkg, and many more.",
+  "description": "expressjs, cli, pkg, and many more.",
   "main": "index.js",
   "scripts": {
     "release": "standard-version",
@@ -12,9 +12,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
+    "expressjs",
     "expresso",
     "cli",
-    "pkg"
+    "pkg",
+    "typeorm",
+    "sequelize",
+    "rest-api",
+    "boilerplate",
+    "starter-backend"
   ],
   "author": "masb0ymas <n.fajri@mail.com>",
   "license": "MIT",
