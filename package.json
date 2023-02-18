@@ -1,6 +1,6 @@
 {
   "name": "create-expresso-app",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "expresso cli, pkg, and many more.",
   "main": "index.js",
   "scripts": {
