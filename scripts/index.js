@@ -129,7 +129,7 @@ inquirer
       name: 'installDeps',
       type: 'list',
       message: 'Prefer to install dependencies with :',
-      choices: ['npm', 'yarn'],
+      choices: ['yarn', 'pnpm', 'npm'],
     },
   ])
   .then((answers) => {
