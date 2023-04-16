@@ -17,14 +17,14 @@ Duplicate .env.example to .env
 Customize `Database`, `Redis`, and `Storage` provider configurations, example :
 
 ```sh
-DB_CONNECTION=postgres
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=your_database
-DB_USERNAME=postgres
-DB_PASSWORD=your_password
-DB_SYNC=false
-DB_TIMEZONE=Asia/Jakarta
+SEQUELIZE_CONNECTION=postgres
+SEQUELIZE_HOST=127.0.0.1
+SEQUELIZE_PORT=5432
+SEQUELIZE_DATABASE=your_database
+SEQUELIZE_USERNAME=postgres
+SEQUELIZE_PASSWORD=your_password
+SEQUELIZE_SYNC=false
+SEQUELIZE_TIMEZONE=Asia/Jakarta
 
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6379
