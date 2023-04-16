@@ -26,10 +26,14 @@ if (major < 14) {
   process.exit(1)
 }
 
+if (major < 18) {
+  console.log('Recommendation using node version 18')
+}
+
 if (process.argv.length < 3) {
   console.log('You have to provide a name to your app.')
   console.log('For example :')
-  console.log('    npx create-expresso-app my-app')
+  console.log(chalk.cyan('    npx create-expresso-app my-app'))
   process.exit(1)
 }
 
@@ -84,6 +88,8 @@ function main(templateChoice, projectPath, installDeps) {
 
     if (installDeps === 'yarn') {
       execSync('yarn')
+    } else if (installDeps === 'pnpm') {
+      execSync('pnpm install')
     } else if (installDeps === 'npm') {
       execSync('npm install')
     } else {
