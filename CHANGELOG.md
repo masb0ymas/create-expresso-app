@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/masb0ymas/create-expresso-app/compare/v0.1.3...v0.1.4) (2023-06-08)
+
+
+### Features
+
+* add script generate minimal expresso ([bacafe9](https://github.com/masb0ymas/create-expresso-app/commit/bacafe9902e064e46a8a4d8dc531f163e42e8068))
+
 ### [0.1.3](https://github.com/masb0ymas/create-expresso-app/compare/v0.1.2...v0.1.3) (2023-04-16)
 
 
