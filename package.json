@@ -29,12 +29,12 @@
     "create-expresso-app": "./scripts/index.js"
   },
   "dependencies": {
-    "chalk": "~4.1.2",
-    "inquirer": "^9.1.5"
+    "colorette": "^2.0.20",
+    "inquirer": "^9.2.10"
   },
   "devDependencies": {
-    "prettier": "^2.8.7",
-    "rimraf": "^4.4.1",
+    "prettier": "^3.0.1",
+    "rimraf": "^5.0.1",
     "standard-version": "^9.5.0"
   }
 }
