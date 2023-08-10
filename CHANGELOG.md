@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/masb0ymas/create-expresso-app/compare/v0.1.4...v0.1.5) (2023-08-10)
+
+
+### Bug Fixes
+
+* change chalk to colorette ([60d7e5c](https://github.com/masb0ymas/create-expresso-app/commit/60d7e5ca8e3466a4fe193d0a82c05fa8ded74ef3))
+* update deps ([e166b0a](https://github.com/masb0ymas/create-expresso-app/commit/e166b0a294415365ba7a6bad4abedf08468494ca))
+
 ### [0.1.4](https://github.com/masb0ymas/create-expresso-app/compare/v0.1.3...v0.1.4) (2023-06-08)
 
 
