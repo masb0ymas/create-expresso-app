@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import inquirer from 'inquirer'
-import fs from 'fs'
-import path from 'path'
-import chalk from 'chalk'
 import { execSync } from 'child_process'
+import { blue, cyan, green } from 'colorette'
+import fs from 'fs'
+import inquirer from 'inquirer'
+import path from 'path'
 
 const currentNodeVersion = process.versions.node
 const semver = currentNodeVersion.split('.')
@@ -27,13 +27,13 @@ if (major < 14) {
 }
 
 if (major < 18) {
-  console.log('Recommendation using node version 18')
+  console.log(green('Recommendation using node version 18'))
 }
 
 if (process.argv.length < 3) {
   console.log('You have to provide a name to your app.')
   console.log('For example :')
-  console.log(chalk.cyan('    npx create-expresso-app my-app'))
+  console.log(cyan('    npx create-expresso-app my-app'))
   process.exit(1)
 }
 
@@ -43,8 +43,8 @@ if (process.argv.length < 3) {
  * @returns
  */
 function logServer(message) {
-  const newType = chalk.blue('Create Expresso App :')
-  const newMessage = chalk.green(message)
+  const newType = blue('Create expresso app :')
+  const newMessage = green(message)
 
   const result = `${newType} ${newMessage}`
 
@@ -79,7 +79,7 @@ function main(templateChoice, projectPath, installDeps) {
   try {
     const repoURL = `${originGitRepo}/${templateChoice}`
 
-    console.log(logServer('Downloading repo...'))
+    console.log(logServer('Clone repository...'))
     execSync(`git clone --depth 1 ${repoURL} ${projectPath}`)
 
     process.chdir(projectPath)
