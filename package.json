@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "colorette": "^2.0.20",
-    "inquirer": "^9.2.10"
+    "inquirer": "^9.2.11"
   },
   "devDependencies": {
-    "prettier": "^3.0.1",
-    "rimraf": "^5.0.1",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
     "standard-version": "^9.5.0"
   }
 }
