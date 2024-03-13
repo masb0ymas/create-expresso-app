@@ -25,9 +25,17 @@
   ],
   "author": "masb0ymas <n.fajri@mail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/masb0ymas/create-expresso-app#readme",
   "type": "module",
   "bin": {
     "create-expresso-app": "./scripts/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masb0ymas/create-expresso-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/masb0ymas/create-expresso-app/issues"
   },
   "dependencies": {
     "colorette": "^2.0.20",
