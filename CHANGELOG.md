@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/masb0ymas/create-expresso-app/compare/v0.1.8...v0.1.9) (2024-03-15)
+
+
+### Features
+
+* add tea contributor ([f7a3154](https://github.com/masb0ymas/create-expresso-app/commit/f7a3154e3221ab926a01036096a5a9c9ef4472fe))
+
 ### [0.1.8](https://github.com/masb0ymas/create-expresso-app/compare/v0.1.7...v0.1.8) (2024-03-13)
 
 
