@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/masb0ymas/create-expresso-app/compare/v0.1.9...v0.1.10) (2024-05-15)
+
+
+### Bug Fixes
+
+* update deps ([9c140e8](https://github.com/masb0ymas/create-expresso-app/commit/9c140e80553febd822e998aa1c7de02d1b4057c8))
+
 ### [0.1.9](https://github.com/masb0ymas/create-expresso-app/compare/v0.1.8...v0.1.9) (2024-03-15)
 
 
