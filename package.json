@@ -9,7 +9,7 @@
     "release:patch": "npm run release -- --release-as patch",
     "release:minor": "npm run release -- --release-as minor",
     "release:major": "npm run release -- --release-as major",
-    "postrelease": "git push --follow-tags origin main && npm publish",
+    "postrelease": "git push --follow-tags origin main && npm publish --auth-type=legacy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
