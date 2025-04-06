@@ -1,5 +1,5 @@
 {
-  "name": "create-expresso-app",
+  "name": "create-expressjs-starterkit",
   "version": "0.1.10",
   "description": "expressjs, cli, pkg, and many more.",
   "main": "index.js",
@@ -14,7 +14,6 @@
   },
   "keywords": [
     "expressjs",
-    "expresso",
     "cli",
     "pkg",
     "typeorm",
@@ -25,17 +24,17 @@
   ],
   "author": "masb0ymas <n.fajri@mail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/masb0ymas/create-expresso-app#readme",
+  "homepage": "https://github.com/masb0ymas/create-expressjs-starterkit#readme",
   "type": "module",
   "bin": {
-    "create-expresso-app": "./scripts/index.js"
+    "create-expressjs-starterkit": "./scripts/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/masb0ymas/create-expresso-app.git"
+    "url": "git+https://github.com/masb0ymas/create-expressjs-starterkit.git"
   },
   "bugs": {
-    "url": "https://github.com/masb0ymas/create-expresso-app/issues"
+    "url": "https://github.com/masb0ymas/create-expressjs-starterkit/issues"
   },
   "dependencies": {
     "colorette": "^2.0.20",

@@ -1,117 +1,138 @@
 #!/usr/bin/env node
 
 import { execSync } from 'child_process'
-import { blue, cyan, green } from 'colorette'
+import { blue, cyan, green, red, yellow } from 'colorette'
 import fs from 'fs'
 import inquirer from 'inquirer'
 import path from 'path'
 
 const currentNodeVersion = process.versions.node
 const semver = currentNodeVersion.split('.')
-const major = semver[0]
+const major = parseInt(semver[0], 10)
 
 const defaultProjectName = process.argv[2]
-
 const currentPath = process.cwd()
 const originGitRepo = 'https://github.com/masb0ymas'
 
-if (major < 14) {
-  console.error(
-    'You are running Node ' +
-      currentNodeVersion +
-      '.\n' +
-      'Create Expresso App requires Node 14 or higher. \n' +
-      'Please update your version of Node.'
-  )
-  process.exit(1)
-}
-
-if (major < 18) {
-  console.log(green('Recommendation using node version 18'))
-}
-
-if (process.argv.length < 3) {
-  console.log('You have to provide a name to your app.')
-  console.log('For example :')
-  console.log(cyan('    npx create-expresso-app my-app'))
-  process.exit(1)
-}
-
 /**
- * Log Server
+ * Log formatted message
  * @param {string} message
- * @returns
+ * @param {Function} colorFn
+ * @returns {string}
  */
-function logServer(message) {
-  const newType = blue('Create expresso app :')
-  const newMessage = green(message)
-
-  const result = `${newType} ${newMessage}`
-
-  return result
+function logMessage(message, colorFn = green) {
+  const prefix = blue('expressjs-cli:')
+  const coloredMessage = colorFn(message)
+  return `${prefix} ${coloredMessage}`
 }
 
 /**
- * Validate Directory
- * @param {string} projectPath
+ * Validate Node.js version
  */
-function validateDir(projectPath) {
+function validateNodeVersion() {
+  if (major < 18) {
+    console.error(
+      red(
+        `You are running Node ${currentNodeVersion}.\n` +
+          'Create Expressjs Starterkit requires Node 18 or higher.\n' +
+          'Please update your version of Node.'
+      )
+    )
+    process.exit(1)
+  }
+
+  if (major < 22) {
+    console.log(logMessage('Recommendation using node version 22', yellow))
+  }
+}
+
+/**
+ * Validate command line arguments
+ */
+function validateArgs() {
+  if (process.argv.length < 3) {
+    console.log('You have to provide a name to your app.')
+    console.log('For example:')
+    console.log(cyan('    npx create-expressjs-starterkit my-app'))
+    process.exit(1)
+  }
+}
+
+/**
+ * Create project directory
+ * @param {string} projectPath
+ * @param {string} projectName
+ */
+function createProjectDirectory(projectPath, projectName) {
   try {
     fs.mkdirSync(projectPath)
   } catch (err) {
     if (err.code === 'EEXIST') {
-      const message = `The file ${projectName} already exist in the current directory, please give it another name.`
-      console.log(logServer(message))
+      const message = `The file ${projectName} already exists in the current directory, please give it another name.`
+      console.log(logMessage(message, red))
     } else {
-      console.log(err)
+      console.log(red(err))
     }
     process.exit(1)
   }
 }
 
 /**
- * Main
+ * Install project dependencies
+ * @param {string} packageManager
+ */
+function installDependencies(packageManager) {
+  console.log(logMessage('Installing dependencies...'))
+
+  switch (packageManager) {
+    case 'yarn':
+      execSync('yarn')
+      break
+    case 'pnpm':
+      execSync('pnpm install')
+      break
+    default:
+      execSync('npm install')
+  }
+}
+
+/**
+ * Setup project
  * @param {string} templateChoice
  * @param {string} projectPath
- * @param {string} installDeps
+ * @param {string} packageManager
  */
-function main(templateChoice, projectPath, installDeps) {
+function setupProject(templateChoice, projectPath, packageManager) {
   try {
     const repoURL = `${originGitRepo}/${templateChoice}`
 
-    console.log(logServer('Clone repository...'))
+    console.log(logMessage('Cloning repository...'))
     execSync(`git clone --depth 1 ${repoURL} ${projectPath}`)
 
     process.chdir(projectPath)
 
-    console.log(logServer('Installing dependencies...'))
+    installDependencies(packageManager)
 
-    if (installDeps === 'yarn') {
-      execSync('yarn')
-    } else if (installDeps === 'pnpm') {
-      execSync('pnpm install')
-    } else if (installDeps === 'npm') {
-      execSync('npm install')
-    } else {
-      execSync('npm install')
-    }
-
-    console.log(logServer('Removing useless files'))
+    console.log(logMessage('Removing useless files'))
     execSync('npx rimraf ./.git')
 
-    // fs.rmdirSync(path.join(projectPath, 'bin'), { recursive: true })
-    console.log(logServer('The installation is done, this is ready to use !'))
+    console.log(logMessage('The installation is done, this is ready to use!'))
   } catch (err) {
-    console.log(err)
+    console.log(red(err))
+    process.exit(1)
   }
 }
+
+// Main execution
+validateNodeVersion()
+validateArgs()
 
 inquirer
   .prompt([
     {
       name: 'templateChoice',
       type: 'list',
-      message: 'What project template would you like to generate ?',
+      message: 'What project template would you like to generate?',
       choices: ['express-api', 'express-api-typeorm', 'express-api-sequelize'],
     },
     {
@@ -119,28 +140,28 @@ inquirer
       type: 'input',
       message: 'Project name:',
       validate: function (input) {
-        if (/^([A-Za-z\-\_\d\.])+$/.test(input)) return true
-        else
-          return 'Project name may only include letters, numbers, underscores and hashes.'
+        return (
+          /^([A-Za-z\-\_\d\.]+)$/.test(input) ||
+          'Project name may only include letters, numbers, underscores and hashes.'
+        )
       },
       default: defaultProjectName,
     },
     {
-      name: 'installDeps',
+      name: 'packageManager',
       type: 'list',
-      message: 'Prefer to install dependencies with :',
+      message: 'Prefer to install dependencies with:',
       choices: ['npm', 'yarn', 'pnpm'],
     },
   ])
   .then((answers) => {
-    const templateChoice = answers.templateChoice
-    const projectName = answers.projectName
-    const installDeps = answers.installDeps
+    const { templateChoice, projectName, packageManager } = answers
     const projectPath = path.join(currentPath, projectName)
 
-    // validate
-    validateDir(projectPath)
-
-    // run clone git
-    main(templateChoice, projectPath, installDeps)
+    createProjectDirectory(projectPath, projectName)
+    setupProject(templateChoice, projectPath, packageManager)
+  })
+  .catch((error) => {
+    console.error(red('An error occurred:'), error)
+    process.exit(1)
   })
