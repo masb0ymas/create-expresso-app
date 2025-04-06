@@ -1,22 +1,23 @@
-# create-expresso-app
+# create-expressjs-starterkit
 
-Simple generate starter backend with `expresso-typeorm` or `expresso-sequelize`, run a command like this :
+A simple CLI tool to generate Express.js starter backends with TypeORM or Sequelize.
 
-```sh
-npx create-expresso-app my-app
-```
-
-Next step
+## Quick Start
 
 ```sh
+npx create-expressjs-starterkit my-app
 cd my-app
 ```
 
-Duplicate .env.example to .env
+## Configuration
 
-Customize `Database`, `Redis`, and `Storage` provider configurations, example :
+1. Duplicate `.env.example` to `.env`
+2. Configure your database and storage settings:
+
+### For Sequelize Template
 
 ```sh
+# Database Configuration
 SEQUELIZE_CONNECTION=postgres
 SEQUELIZE_HOST=127.0.0.1
 SEQUELIZE_PORT=5432
@@ -26,10 +27,7 @@ SEQUELIZE_PASSWORD=your_password
 SEQUELIZE_SYNC=false
 SEQUELIZE_TIMEZONE=Asia/Jakarta
 
-REDIS_HOST=127.0.0.1
-REDIS_PORT=6379
-REDIS_PASSWORD=your_password
-
+# Storage Configuration
 STORAGE_ACCESS_KEY=your_access_key
 STORAGE_SECRET_KEY=your_secret_key
 STORAGE_BUCKET_NAME=your_bucket_name
@@ -37,7 +35,8 @@ STORAGE_REGION=ap-southeast-1
 STORAGE_SIGN_EXPIRED=7d
 ```
 
-for `expresso-typeorm` template database configuration like this :
+### For TypeORM Template
+
 ```sh
 TYPEORM_CONNECTION=postgres
 TYPEORM_HOST=127.0.0.1
@@ -50,7 +49,9 @@ TYPEORM_LOGGING=true
 TYPEORM_MIGRATIONS_RUN=true
 ```
 
-and then,
+## Development
+
+Start the development server:
 
 ```sh
 yarn dev
