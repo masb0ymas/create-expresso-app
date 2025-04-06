@@ -112,7 +112,7 @@ inquirer
       name: 'templateChoice',
       type: 'list',
       message: 'What project template would you like to generate ?',
-      choices: ['expresso-typeorm', 'expresso-sequelize', 'minimal-expresso'],
+      choices: ['express-api', 'express-api-typeorm', 'express-api-sequelize'],
     },
     {
       name: 'projectName',
@@ -141,12 +141,6 @@ inquirer
     // validate
     validateDir(projectPath)
 
-    let newTemplateChoice = templateChoice
-
-    if(templateChoice === 'minimal-expresso') {
-      newTemplateChoice = 'expresso-gateway'
-    }
-
     // run clone git
-    main(newTemplateChoice, projectPath, installDeps)
+    main(templateChoice, projectPath, installDeps)
   })
