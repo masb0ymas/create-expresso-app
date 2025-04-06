@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/masb0ymas/create-expressjs-starterkit/compare/v0.1.10...v1.0.0) (2025-04-06)
+
+
+### Bug Fixes
+
+* update choose template ([8a37e87](https://github.com/masb0ymas/create-expressjs-starterkit/commit/8a37e8734d337169e843b594aa21caf51dec356c))
+* update package name ([17a9c39](https://github.com/masb0ymas/create-expressjs-starterkit/commit/17a9c3951c928cd9ddb17f46e70a4085c81fd380))
+* update script post release ([efd514f](https://github.com/masb0ymas/create-expressjs-starterkit/commit/efd514ff38c63d23621e4bf91e57205d9ff214ee))
+
 ### [0.1.10](https://github.com/masb0ymas/create-expresso-app/compare/v0.1.9...v0.1.10) (2024-05-15)
 
 
